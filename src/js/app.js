@@ -7,11 +7,9 @@ const cita = {
     hora: '',
     servicios: []
 
-
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-
     iniciarApp();
 });
 
@@ -39,9 +37,6 @@ function iniciarApp() {
 
 }
 
-
-
-
 function mostrarSeccion() {
 
     // Eliminar mostrar-seccion de la seccion anterior
@@ -51,7 +46,6 @@ function mostrarSeccion() {
         seccionAnterior.classList.remove('mostrar-seccion');
     }
     
-
     const seccionActual = document.querySelector(`#paso-${pagina}`);
     seccionActual.classList.add('mostrar-seccion');
 
@@ -62,9 +56,6 @@ function mostrarSeccion() {
     if (tabAnterior) {
         tabAnterior.classList.remove('actual');
     }
-
-    
-    
 
     // Resalta el Tab Actual
 
@@ -83,13 +74,10 @@ function cambiarSeccion() {
             // LLamar la funcion de mostrar seccion
 
             mostrarSeccion();
-
             botonesPaginador();
 
         })
-
     })
-
 }
 
 
@@ -97,7 +85,6 @@ async function mostrarServicios() {
     try {
         const resultado = await fetch('./servicios.json');
         const db = await resultado.json();
-
 
         const { servicios } = db;
 
@@ -166,9 +153,8 @@ function seleccionarServicio(e) {
         }
 
         // console.log(servicioObj);
-        
-        agregarServicio(servicioObj);
 
+        agregarServicio(servicioObj);
     }
 
 }
@@ -181,7 +167,6 @@ function eliminarServicio(id) {
 
 function agregarServicio(servicioObj) {
     const { servicios } = cita;
-
     cita.servicios = [...servicios, servicioObj];
 }
 
@@ -192,8 +177,6 @@ function paginaSiguiente() {
     const paginaSiguiente =document.querySelector('#siguiente');
     paginaSiguiente.addEventListener('click', () => {
         pagina++;
-
-
         botonesPaginador()
     });
 }
@@ -202,7 +185,6 @@ function paginaAnterior() {
     const paginaAnterior =document.querySelector('#anterior');
     paginaAnterior.addEventListener('click', () => {
         pagina--;
-
         botonesPaginador()
     });
 }
@@ -219,13 +201,13 @@ function botonesPaginador() {
     } else {
         paginaAnterior.classList.remove('ocultar');
         paginaSiguiente.classList.remove('ocultar');
-        
     }
 
     mostrarSeccion(); // Cambia la seccion que se muestra por la de la pagina
 }
 
 function mostrarResumen() {
+    
     // Destructuring
     const { nombre , fecha , hora, servicios } = cita;
 
